@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 LasLabs Inc.
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+# Copyright 2016-2017 LasLabs Inc.
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 import openerp.addons.decimal_precision as dp
 
 
@@ -22,14 +22,10 @@ class StockPickingRate(models.Model):
         required=True,
     )
     date_generated = fields.Datetime(
-        string='Date Generated',
         required=True,
         default=lambda s: fields.Datetime.now(),
     )
-    date_purchased = fields.Datetime(
-        string='Date Purchased',
-        store=True,
-    )
+    date_purchased = fields.Datetime()
     rate_currency_id = fields.Many2one(
         string='Rate Currency',
         comodel_name='res.currency',
@@ -40,7 +36,6 @@ class StockPickingRate(models.Model):
         required=True,
     )
     retail_rate = fields.Float(
-        string='Retail Rate',
         digits=dp.get_precision('Product Price'),
     )
     retail_rate_currency_id = fields.Many2one(

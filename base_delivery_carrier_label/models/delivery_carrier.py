@@ -18,6 +18,7 @@ class DeliveryCarrier(models.Model):
         string='Type',
         help="Carrier type (combines several delivery methods)",
         oldname='type',
+        related='delivery_type',
     )
     code = fields.Char(
         help="Delivery Method Code (according to carrier)",

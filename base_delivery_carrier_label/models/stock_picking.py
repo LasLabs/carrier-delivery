@@ -47,7 +47,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def generate_shipping_labels(self, package_ids=None):
-        """Generate a shipping label by default
+        """Generate a shipping label by default.
+
+        This method is deprecated. Use delivery_carrier.generate_shipping_labels
 
         This method can be inherited to create specific shipping labels
         a list of label must be return as we can have multiple
